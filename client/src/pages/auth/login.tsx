@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,10 +10,17 @@ import { useToast } from '@/hooks/use-toast';
 export default function Login() {
   const [phone, setPhone] = useState('');
   const [, setLocation] = useLocation();
-  const { login, isLoggingIn } = useAuth();
+  const { login, isLoggingIn, currentUser } = useAuth();
   const { toast } = useToast();
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Redirect to home if already logged in
+  useEffect(() => {
+    if (currentUser) {
+      setLocation('/');
+    }
+  }, [currentUser, setLocation]);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!phone || phone.length < 10) {
@@ -25,15 +32,19 @@ export default function Login() {
       return;
     }
 
-    login(phone, {
-      onSuccess: () => {
-        toast({
-          title: 'Welcome! 🎉',
-          description: 'You have been logged in successfully',
-        });
-        setLocation('/');
-      },
-    });
+    try {
+      login(phone);
+      toast({
+        title: 'Welcome!',
+        description: 'You have been logged in successfully',
+      });
+    } catch (error) {
+      toast({
+        title: 'Login failed',
+        description: 'Please try again',
+        variant: 'destructive',
+      });
+    }
   };
 
   return (

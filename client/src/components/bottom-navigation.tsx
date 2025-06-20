@@ -21,8 +21,8 @@ export function BottomNavigation() {
           
           return (
             <Link key={path} href={path}>
-              <a className={cn(
-                "flex flex-col items-center py-2 px-4 transition-colors",
+              <div className={cn(
+                "flex flex-col items-center py-2 px-4 transition-colors cursor-pointer",
                 isActive 
                   ? "text-accent" 
                   : "text-muted-foreground hover:text-foreground"
@@ -34,7 +34,7 @@ export function BottomNavigation() {
                     <span className="text-xs font-bold text-destructive-foreground">3</span>
                   </div>
                 )}
-              </a>
+              </div>
             </Link>
           );
         })}

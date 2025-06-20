@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from '@/lib/queryClient';
 import type { User } from '@shared/schema';
 
@@ -28,13 +28,12 @@ export function useAuth() {
   useEffect(() => {
     const userId = localStorage.getItem('userId');
     if (userId && !currentUser) {
-      // Optionally fetch user data on app start
       fetch(`/api/user/${userId}`)
-        .then(res => res.json())
+        .then(res => res.ok ? res.json() : Promise.reject())
         .then(user => setCurrentUser(user))
         .catch(() => localStorage.removeItem('userId'));
     }
-  }, [currentUser]);
+  }, []);
 
   return {
     currentUser,
