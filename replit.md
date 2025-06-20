@@ -107,6 +107,8 @@ This is a modern web application built for video calling and host interaction se
 ```
 Changelog:
 - June 20, 2025. Initial setup
+- June 20, 2025. Removed authentication system per user request
+- June 20, 2025. Made app more human-like with realistic host profiles and natural language
 ```
 
 ## User Preferences

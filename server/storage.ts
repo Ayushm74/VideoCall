@@ -57,14 +57,14 @@ export class MemStorage implements IStorage {
   private initializeMockData() {
     // Initialize mock gifts
     const mockGifts = [
-      { name: "Rose", emoji: "🌹", coinCost: 30, animation: "float" },
-      { name: "Kiss", emoji: "💋", coinCost: 50, animation: "bounce" },
-      { name: "Heart", emoji: "❤️", coinCost: 25, animation: "pulse" },
-      { name: "Teddy", emoji: "🧸", coinCost: 100, animation: "wiggle" },
-      { name: "Car", emoji: "🏎️", coinCost: 500, animation: "drive" },
-      { name: "Ring", emoji: "💍", coinCost: 999, animation: "sparkle" },
-      { name: "Fireworks", emoji: "🎆", coinCost: 2000, animation: "explode" },
-      { name: "Crown", emoji: "👑", coinCost: 1500, animation: "shine" },
+      { name: "Coffee", emoji: "☕", coinCost: 15, animation: "float" },
+      { name: "Pizza slice", emoji: "🍕", coinCost: 25, animation: "bounce" },
+      { name: "Sunflower", emoji: "🌻", coinCost: 35, animation: "pulse" },
+      { name: "Book", emoji: "📚", coinCost: 40, animation: "wiggle" },
+      { name: "Concert ticket", emoji: "🎵", coinCost: 85, animation: "drive" },
+      { name: "Nice dinner", emoji: "🍽️", coinCost: 120, animation: "sparkle" },
+      { name: "Weekend trip", emoji: "✈️", coinCost: 300, animation: "explode" },
+      { name: "Surprise gift", emoji: "🎁", coinCost: 200, animation: "shine" },
     ];
 
     mockGifts.forEach(gift => {
@@ -74,11 +74,15 @@ export class MemStorage implements IStorage {
 
     // Initialize mock hosts
     const mockHosts = [
-      { userId: null, name: "Priya", bio: "Love dancing and movies", rating: "4.9", coinRate: 50, isOnline: true, isVerified: true, totalEarnings: 12500, avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
-      { userId: null, name: "Ananya", bio: "Friendly and fun conversations", rating: "4.7", coinRate: 40, isOnline: true, isVerified: false, totalEarnings: 8900, avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
-      { userId: null, name: "Kavya", bio: "Artist and music lover", rating: "4.8", coinRate: 60, isOnline: true, isVerified: true, totalEarnings: 15600, avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
-      { userId: null, name: "Riya", bio: "Travel enthusiast", rating: "4.6", coinRate: 45, isOnline: true, isVerified: false, totalEarnings: 6700, avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
-      { userId: null, name: "Meera", bio: "Yoga instructor", rating: "4.9", coinRate: 70, isOnline: false, isVerified: true, totalEarnings: 22100, avatar: "https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Emma", bio: "Psychology student who loves deep talks about life", rating: "4.8", coinRate: 35, isOnline: true, isVerified: true, totalEarnings: 12500, avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b830?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Sofia", bio: "Coffee addict & bookworm from Barcelona", rating: "4.6", coinRate: 28, isOnline: true, isVerified: false, totalEarnings: 8900, avatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Maya", bio: "Digital artist working from Bali", rating: "4.9", coinRate: 42, isOnline: true, isVerified: true, totalEarnings: 15600, avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Chloe", bio: "Just moved to NYC, exploring the city", rating: "4.5", coinRate: 32, isOnline: true, isVerified: false, totalEarnings: 6700, avatar: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Lily", bio: "Med student taking a break from studying", rating: "4.7", coinRate: 25, isOnline: true, isVerified: false, totalEarnings: 3200, avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Nina", bio: "Marketing manager working remote from Mexico", rating: "4.8", coinRate: 38, isOnline: true, isVerified: true, totalEarnings: 9800, avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Alex", bio: "Freelance photographer documenting city life", rating: "4.6", coinRate: 30, isOnline: true, isVerified: false, totalEarnings: 5400, avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Zara", bio: "Fashion design student from London", rating: "4.9", coinRate: 45, isOnline: false, isVerified: true, totalEarnings: 14200, avatar: "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
+      { userId: null, name: "Kate", bio: "Weekend chef who loves trying new recipes", rating: "4.4", coinRate: 22, isOnline: false, isVerified: false, totalEarnings: 2100, avatar: "https://images.unsplash.com/photo-1502323777036-f29e3972d82f?ixlib=rb-4.0.3&w=400&h=500&fit=crop&crop=face" },
     ];
 
     mockHosts.forEach(host => {

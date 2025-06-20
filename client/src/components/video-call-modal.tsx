@@ -104,7 +104,7 @@ export function VideoCallModal({ isOpen, host, onClose }: VideoCallModalProps) {
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
           <div className="glass-card px-6 py-3 rounded-full text-center">
             <h3 className="font-bold text-lg">{host.name}</h3>
-            <p className="text-sm text-muted-foreground">{host.coinRate} coins/min</p>
+            <p className="text-sm text-muted-foreground">{host.coinRate || 30} coins/min</p>
           </div>
         </div>
 

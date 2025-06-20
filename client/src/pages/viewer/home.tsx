@@ -69,11 +69,11 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-20">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Connect with
-              <span className="text-accent block md:inline md:ml-4">Amazing People</span>
+              Real conversations,
+              <span className="text-accent block md:inline md:ml-4">real people</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-              Experience premium 1-on-1 video chats with verified hosts. Send gifts, earn rewards, and build meaningful connections.
+              Chat face-to-face with interesting people from around the world. No scripts, no fake profiles.
             </p>
             
             <div className="flex items-center justify-center space-x-2 gold-gradient px-6 py-3 rounded-full w-fit mx-auto mb-8">
@@ -95,7 +95,7 @@ export default function Home() {
                 }}
               >
                 <Video className="w-5 h-5 mr-2" />
-                Start Video Chat
+                Start chatting
               </Button>
               <Button 
                 size="lg"
@@ -103,7 +103,7 @@ export default function Home() {
                 className="border-2 border-white text-white hover:bg-white hover:text-dark px-8 py-6 text-lg font-semibold"
               >
                 <Coins className="w-5 h-5 mr-2" />
-                Buy Coins
+                Get coins
               </Button>
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-3xl font-bold flex items-center">
               <div className="w-3 h-3 bg-red-500 rounded-full mr-3 live-pulse" />
-              Live Hosts
+              Available now
               <Badge variant="secondary" className="ml-3">
                 {onlineHosts.length} online
               </Badge>
@@ -167,8 +167,8 @@ export default function Home() {
             <Card className="text-center py-12">
               <CardContent>
                 <Crown className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">No hosts online right now</h3>
-                <p className="text-muted-foreground">Check back later for live hosts!</p>
+                <h3 className="text-xl font-semibold mb-2">Everyone's busy at the moment</h3>
+                <p className="text-muted-foreground">Try again in a few minutes!</p>
               </CardContent>
             </Card>
           )}
@@ -178,7 +178,7 @@ export default function Home() {
         {offlineHosts.length > 0 && (
           <div>
             <h2 className="text-2xl font-bold mb-6 text-muted-foreground">
-              Offline Hosts
+              Currently away
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 opacity-60">
               {offlineHosts.map((host: Host) => (
