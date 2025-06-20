@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { useAuth } from '@/hooks/use-auth';
+
 import { apiRequest } from '@/lib/queryClient';
 import { GIFT_ANIMATIONS } from '@/lib/constants';
 import type { Gift } from '@shared/schema';
@@ -15,33 +15,30 @@ interface GiftCatalogProps {
 
 export function GiftCatalog({ hostId, onGiftSent }: GiftCatalogProps) {
   const [selectedGift, setSelectedGift] = useState<Gift | null>(null);
-  const { currentUser } = useAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  
+  // Mock user for demo purposes
+  const mockUser = {
+    id: 1,
+    coinBalance: 850
+  };
 
-  const { data: gifts = [], isLoading } = useQuery({
+  const { data: gifts = [], isLoading } = useQuery<Gift[]>({
     queryKey: ['/api/gifts'],
   });
 
   const sendGiftMutation = useMutation({
     mutationFn: async (gift: Gift) => {
-      if (!currentUser) throw new Error('Not authenticated');
-      
-      // Deduct coins from user
-      await apiRequest('POST', `/api/user/${currentUser.id}/coins`, {
-        amount: -gift.coinCost,
-        transactionType: 'gift'
-      });
-
+      // Simulate gift sending in frontend-only mode
       return gift;
     },
     onSuccess: (gift) => {
       toast({
-        title: 'Gift Sent! 🎉',
+        title: 'Gift Sent!',
         description: `You sent a ${gift.name} ${gift.emoji}`,
       });
       
-      queryClient.invalidateQueries({ queryKey: ['/api/user'] });
       onGiftSent?.(gift);
       setSelectedGift(null);
     },
@@ -55,15 +52,7 @@ export function GiftCatalog({ hostId, onGiftSent }: GiftCatalogProps) {
   });
 
   const handleGiftSelect = (gift: Gift) => {
-    if (!currentUser) {
-      toast({
-        title: 'Please login first',
-        variant: 'destructive',
-      });
-      return;
-    }
-
-    if ((currentUser.coinBalance || 0) < gift.coinCost) {
+    if (mockUser.coinBalance < gift.coinCost) {
       toast({
         title: 'Insufficient coins',
         description: 'Please recharge your wallet',

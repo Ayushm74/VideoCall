@@ -1,6 +1,5 @@
 import { useLocation } from 'wouter';
 import { BottomNavigation } from '@/components/bottom-navigation';
-import { useAuth } from '@/hooks/use-auth';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -8,9 +7,8 @@ interface AppLayoutProps {
 
 export function AppLayout({ children }: AppLayoutProps) {
   const [location] = useLocation();
-  const { currentUser } = useAuth();
   
-  const showBottomNav = currentUser && !location.startsWith('/admin') && !location.startsWith('/host');
+  const showBottomNav = !location.startsWith('/admin') && !location.startsWith('/host');
 
   return (
     <div className="min-h-screen bg-background">

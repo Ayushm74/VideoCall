@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Phone, Mic, MicOff, Video, VideoOff, MessageCircle, Gift } from 'lucide-react';
-import { useAuth } from '@/hooks/use-auth';
+
 import { GiftCatalog } from '@/components/gift-catalog';
 import type { Host } from '@shared/schema';
 
@@ -19,14 +19,21 @@ export function VideoCallModal({ isOpen, host, onClose }: VideoCallModalProps) {
   const [isVideoOff, setIsVideoOff] = useState(false);
   const [showGifts, setShowGifts] = useState(false);
   const [showChat, setShowChat] = useState(false);
-  const { currentUser } = useAuth();
+  
+  // Mock user for demo purposes
+  const mockUser = {
+    id: 1,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=200&h=200&fit=crop&crop=face',
+    username: 'Demo User',
+    coinBalance: 850
+  };
 
   useEffect(() => {
     if (!isOpen || !host) return;
 
     const interval = setInterval(() => {
       setCallDuration(prev => prev + 1);
-      setCoinsSpent(prev => prev + host.coinRate);
+      setCoinsSpent(prev => prev + (host.coinRate || 30));
     }, 60000); // Increment every minute
 
     return () => clearInterval(interval);
@@ -73,7 +80,7 @@ export function VideoCallModal({ isOpen, host, onClose }: VideoCallModalProps) {
         {!isVideoOff && (
           <div className="absolute top-4 right-4 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden border-2 border-accent">
             <img 
-              src={currentUser?.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=200&h=200&fit=crop&crop=face'} 
+              src={mockUser.avatar} 
               alt="Your Video" 
               className="w-full h-full object-cover"
             />

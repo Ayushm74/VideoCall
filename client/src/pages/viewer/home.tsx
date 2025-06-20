@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Search, Filter, Coins, Video, Crown } from 'lucide-react';
 import { HostCard } from '@/components/host-card';
 import { VideoCallModal } from '@/components/video-call-modal';
-import { useAuth } from '@/hooks/use-auth';
+
 import { useToast } from '@/hooks/use-toast';
 import type { Host } from '@shared/schema';
 
@@ -15,10 +15,16 @@ export default function Home() {
   const [selectedHost, setSelectedHost] = useState<Host | null>(null);
   const [showCallModal, setShowCallModal] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const { currentUser } = useAuth();
   const { toast } = useToast();
+  
+  // Mock user for demo purposes
+  const mockUser = {
+    id: 1,
+    coinBalance: 850,
+    username: "Demo User"
+  };
 
-  const { data: hosts = [], isLoading } = useQuery({
+  const { data: hosts = [], isLoading } = useQuery<Host[]>({
     queryKey: ['/api/hosts'],
   });
 
@@ -33,15 +39,7 @@ export default function Home() {
     const host = hosts.find((h: Host) => h.id === hostId);
     if (!host) return;
 
-    if (!currentUser) {
-      toast({
-        title: 'Please login first',
-        variant: 'destructive',
-      });
-      return;
-    }
-
-    if ((currentUser.coinBalance || 0) < host.coinRate) {
+    if (mockUser.coinBalance < (host.coinRate || 30)) {
       toast({
         title: 'Insufficient coins',
         description: 'Please recharge your wallet to start a call',
@@ -78,14 +76,12 @@ export default function Home() {
               Experience premium 1-on-1 video chats with verified hosts. Send gifts, earn rewards, and build meaningful connections.
             </p>
             
-            {currentUser && (
-              <div className="flex items-center justify-center space-x-2 gold-gradient px-6 py-3 rounded-full w-fit mx-auto mb-8">
-                <Coins className="w-5 h-5 text-accent-foreground" />
-                <span className="text-accent-foreground font-bold text-lg">
-                  {currentUser.coinBalance || 0} coins
-                </span>
-              </div>
-            )}
+            <div className="flex items-center justify-center space-x-2 gold-gradient px-6 py-3 rounded-full w-fit mx-auto mb-8">
+              <Coins className="w-5 h-5 text-accent-foreground" />
+              <span className="text-accent-foreground font-bold text-lg">
+                {mockUser.coinBalance} coins
+              </span>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 

@@ -4,7 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppLayout } from "@/components/layout/app-layout";
-import { useAuth } from "@/hooks/use-auth";
+
 
 // Pages
 import Login from "@/pages/auth/login";
@@ -17,27 +17,14 @@ import AdminDashboard from "@/pages/admin/dashboard";
 import NotFound from "@/pages/not-found";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { currentUser } = useAuth();
-  
-  if (!currentUser) {
-    return <Redirect to="/login" />;
-  }
-  
   return <>{children}</>;
 }
 
 function Router() {
   return (
     <Switch>
-      {/* Auth routes */}
-      <Route path="/login" component={Login} />
-      
       {/* Viewer app routes */}
-      <Route path="/">
-        <ProtectedRoute>
-          <Home />
-        </ProtectedRoute>
-      </Route>
+      <Route path="/" component={Home} />
       
       <Route path="/wallet">
         <ProtectedRoute>
