@@ -1,0 +1,315 @@
+Listen only create frontend dont create backend and also make it mobile friendly - # **1-on-1 Live Video Chat App - UI/UX & Design Specification**  
+
+## **1. Overall Theme & Design Approach**  
+**Style:** Modern, Sleek, Premium, Gamified  
+**Inspiration:** Tango (social engagement), Chingari (vibrant UI), Boloji Pro (monetization focus)  
+**Key Design Principles:**  
+- **Engagement-Driven:** Bold CTAs, gamification elements (badges, leaderboards, animations)  
+- **Premium Feel:** High-quality visuals, smooth transitions, polished UI  
+- **User Retention:** Clear rewards, easy navigation, minimal friction  
+- **Safety & Trust:** Verified badges, reporting mechanisms, clear moderation  
+
+---
+
+## **2. Color Palette**  
+| Element | Primary | Secondary | Accent | Background | Text |  
+|---------|---------|-----------|--------|------------|------|  
+| **Main App** | Deep Purple (#6A35FF) | Pink (#FF3E82) | Gold (#FFD700) | Dark (#121212) | White (#FFFFFF) |  
+| **Host App** | Teal (#00C4CC) | Coral (#FF6B6B) | Silver (#C0C0C0) | Soft Black (#1E1E1E) | Light Gray (#F5F5F5) |  
+| **Admin Panel** | Navy Blue (#1A237E) | Cyan (#00E5FF) | Red (#FF5252) | White (#FFFFFF) | Dark Gray (#333333) |  
+
+**Rationale:**  
+- **Deep Purple + Pink:** Creates a premium, flirtatious vibe (ideal for dating/entertainment apps).  
+- **Gold Accents:** Enhances the "VIP" and gifting economy feel.  
+- **Dark Background:** Reduces eye strain, makes profiles/video pop.  
+- **Host Teal:** Differentiates hosts, feels professional yet inviting.  
+
+---
+
+## **3. Typography**  
+- **Primary Font:** **Inter** (Clean, modern, highly readable)  
+- **Secondary Font (Headings):** **Poppins** (Bold, engaging)  
+- **Sizes:**  
+  - Navbar: **16px (Bold)**  
+  - Buttons: **14px (Semi-bold)**  
+  - Profile Text: **12px (Regular)**  
+  - Call-to-Action (CTA): **18px (Extra Bold)**  
+
+---
+
+## **4. Navigation & Layout**  
+
+### **A. Navbar (Viewer App)**  
+- **Fixed at Bottom** (Mobile-first design)  
+- **Icons + Labels** (Home, Wallet, Call, Gifts, Profile)  
+- **Active Tab Highlight:** Gold glow  
+
+### **B. Sidebar (Host App)**  
+- **Left-Slide Panel** (Profile, Earnings, Leaderboard, Settings)  
+- **"Go Online" Toggle** (Big green button)  
+- **Quick Stats** (Today’s coins, pending payout)  
+
+### **C. Admin Panel Layout**  
+- **Dashboard Overview** (Total users, hosts, revenue)  
+- **Left-Menu:** Users, Hosts, Reports, Payouts, Settings  
+- **Data Tables:** Filterable, exportable logs  
+
+---
+
+## **5. Button Styles**  
+| Type | Color | Border Radius | Shadow | Hover Effect |  
+|------|-------|--------------|---------|--------------|  
+| **Primary (Buy Coins, Call)** | Purple → Pink Gradient | 12px | Soft Glow | Scale 5% + Pulse |  
+| **Secondary (Gifts, Referral)** | Gold | 8px | None | Gold Border |  
+| **Danger (End Call, Report)** | Red | Circle | None | Shake Animation |  
+| **Toggle (Host Online)** | Green (Glow) | Pill | None | Pulse Effect |  
+
+---
+
+## **6. Image & Media Specifications**  
+| Element | Size | Shape | Border | Notes |  
+|---------|------|-------|--------|-------|  
+| **Profile Pictures** | 120x120px | Circle | Gold (VIP) | Verified badge overlay |  
+| **Thumbnails (Live Hosts)** | 200x300px | Rounded (8px) | Purple Glow | "LIVE" red tag |  
+| **Gift Icons** | 64x64px | Square | None | Animated (Lottie) |  
+| **Video Call UI** | Full Screen | - | - | Floating coin counter |  
+
+---
+
+## **7. Grid System (Homepage - Viewer App)**  
+- **2-Column Grid (Mobile)**  
+- **3-Column Grid (Tablet/Desktop)**  
+- **Card Design:**  
+  - Host Image (Top)  
+  - Name & Rating (Middle)  
+  - "Call Now" Button (Bottom)  
+
+---
+
+## **8. Micro-Interactions & Animations**  
+- **Coin Deduction:** Floating -50 coins when call starts  
+- **Gift Sent:** Exploding confetti + sound  
+- **New Match:** Heart pulse animation  
+- **VIP Unlock:** Gold particle effect  
+
+---
+
+## **9. Ideal UI Flow (Key Screens)**  
+
+### **Viewer App:**  
+1. **Splash Screen** (Logo + Tagline)  
+2. **OTP Login** (Phone input → Firebase Auth)  
+3. **Home Feed** (Live hosts in grid)  
+4. **Call Screen** (Video + Coin Timer + Gift Button)  
+5. **Wallet** (Recharge options, history)  
+
+### **Host App:**  
+1. **Onboarding** (KYC upload, intro video)  
+2. **Earnings Dashboard** (Graph + Payout button)  
+3. **Incoming Call UI** (Accept/Reject with user preview)  
+
+### **Admin Panel:**  
+1. **Moderation Dashboard** (Flagged users, pending hosts)  
+2. **Payout Management** (Approve/reject requests)  
+
+---
+
+## **10. Final Notes**  
+- **Dark Mode Default** (Better for video calls)  
+- **High Contrast CTAs** (Ensure visibility)  
+- **Gamification Everywhere** (Badges, progress bars)  
+- **Safety First** (Easy reporting, block flows)  
+ - 1-on-1 live video chat app
+(Reference Applications – Tango, Chingari, Boloji Pro)
+This brief includes:
+1. Executive Summary
+2. Target User & Personas
+3. Product Features & Flow
+4. Coin-Based Economy (Gifting + Video)
+5. Technology Stack (Indicative, can be altered)
+6. Payment System
+7. Supply Onboarding (Hosts)
+8. Admin Panel Requirements
+9. Launch Goals
+10. Future Scope (Phase 2+, not to be covered currently)
+1. Executive Summary
+This is a premium, 1-on-1 live video chat app where users (primary audience: mostly men)
+can interact with creators/hosts via live video and real-time chat. Users spend coins (a virtual
+in-app currency) to:
+• Start video calls (coin per minute)
+• Send virtual gifts (coin-based)
+• Access VIP features
+The goal is to create an engaging, gamified, and monetizable platform similar to Tango,
+Chingari, Boloji Pro etc., but with superior tech, retention systems, host onboarding, and
+clean UI/UX.
+2. Target User & Personas
+Persona Description Goals Pain Points
+Viewer
+(Male, 22–
+40)
+Time-rich user looking for
+flirtatious conversations
+Talk to attractive women,
+feel entertained
+App crashes,
+expensive, fake
+profiles
+Persona Description Goals Pain Points
+Host (Female,
+18–30)
+Income-seeking part-timer
+or full-timer
+Earn coins/money, build
+fanbase
+Confusing
+onboarding,
+harassment
+Admin
+Internal moderation or
+manager
+Manage hosts, suspend
+users, view earnings
+Lack of visibility, hard
+UI
+3. Product Features & User Flow
+A. Viewer (User) App Features
+Feature Details
+OTP Login Firebase phone auth
+Home Screen Shows live/online hosts (filterable)
+Profile User info, coin balance, history
+Wallet Buy coins (via <Payment Provider>), view balance
+1-on-1 Video Call Coin-per-minute deducted; auto disconnect on zero balance
+Chat Real-time messaging with host
+Virtual Gifts Send gifts (coin-based) during chat/call
+Daily Rewards Login streaks, bonus coins
+Notifications Missed call, new host online, recharge reminder
+Referral Code Invite friends for coins
+VIP Plans Monthly plans: unlimited chat / call discount
+Abuse Filter Basic chat filter (bad words, spam) with auto-flag to Admin
+B. Host App Features
+Feature Details
+Host Login OTP login with invite code
+Profile Setup Add selfie, bio, interests, languages
+Go Online Toggle to become visible on app
+Call & Chat UI Accept/reject, coin-based income, mute/report user
+Earnings Dashboard Coin logs, payouts (weekly), conversion rate
+Leaderboard Daily top earners, badges
+Feature Details
+Block & Report Flow
+Host can block/report user during call/chat; system logs
+reason and stores evidence
+Terms & Guidelines
+Hosts see T&C + platform policy during onboarding and before
+going live
+4. Coin-Based Economy (Sample System)
+A. Recharge Packs (User Buys)
+₹ Amount Coins Value
+₹99 100 Base
+₹249 300 +10% Bonus
+₹499 700 +20% Bonus
+₹999 1500 +30% Bonus
+B. Video Call Coin Rates
+Type Rate
+Per Minute 50 coins (default)
+VIP Call 80 coins/minute
+Incoming Call Free for host, charges user
+C. Gift Catalog
+Gift Coin Cost Visual
+Rose 30 coins Emoji + animation
+Kiss 50 coins Popup
+Teddy 100 coins Full-screen
+Car 500 coins Flying car across screen
+Ring 999 coins “Marriage proposal” confetti
+Fireworks 2000 coins Full celebration effect
+ Admin can change coin prices from backend.
+D. Addiction + Engagement Loops
+• Daily login = 10 coins
+• Refer friend = 100 coins
+• Call 3 hosts today = 50 bonus coins
+• Leaderboards, badges, XP levels
+5. Technology Stack
+Layer Tech
+Backend
+Node.js + Express.js (primary), FastAPI (for specialized microservices if
+needed)
+Frontend React.js (Admin panel, web interface), React Native (hybrid mobile app)
+Auth Firebase Phone Auth
+Realtime
+Chat
+Socket.io with Redis Pub/Sub
+Video Calling Agora.io or Jitsi SDK integration
+Database MongoDB (user, gift, chat, history)
+Payments Razorpay or Cashfree (to be finalized)
+Hosting AWS EC2 (main), Docker for containerization, Firebase (auth/media/CDN)
+Admin Panel React.js + Tailwind CSS, with optional Metabase for reporting
+Infrastructure & Scalability Requirements (for 1000 Hosts, 1L+ Users)
+To ensure high performance and uptime at scale, the team will include:
+• Rate limiting & load balancing using Nginx + AWS EC2 auto-scaling groups
+• Redis-based caching & socket session management for stable real-time chat/video
+• Sentry or AWS CloudWatch for backend crash, error, and performance monitoring
+• Media compression + CDN delivery (profile pictures, host intros, gift animations)
+• Task queue or microservice architecture for payouts and asynchronous workflows
+• Session timeout logic – auto logout inactive users after 15 minutes
+6. Payments Integration
+• Provider: <Payment Provider> (India-friendly)
+• To be provided later:
+o <Payment Provider> business account
+o API Key & Secret
+• Use cases:
+o Recharge coins
+o View payment logs
+o Show receipt
+o <Payment Provider> webhooks for success/failure
+7. Supply Onboarding – Host Panel
+Step Detail
+1. Host applies Share invite code or link
+2. KYC Upload selfie, Aadhaar, video intro
+3. Admin Approval Manual vetting (backend toggle)
+4. Dashboard access Live earnings, go online button, help
+5. Call Rules Per min rate auto assigned, reviewed as per Admin
+6. Payouts
+Hosts can request payout once they hit milestone (e.g., 1L coins =
+₹10K). Admin processes payouts manually via RazorpayX, UPI, or
+Cashfree. Coin balance is reduced upon admin approval.
+Admin can:
+• Approve/suspend host
+• Change per-minute pricing
+• Send warnings
+• Chat with host
+• View & manage host payout requests
+Backend team to use a lightweight task queue or payout microservice for future-proofing
+large-scale payout workflows.
+8. Admin Panel Requirements
+• Admin Login
+• View all users/hosts
+• Search by ID/Phone
+• Suspend/reactivate user or host
+• View coin balances
+• Gift coin manually
+• View call logs, chat history
+• Block/report handling
+9. Launch Goals (Phase 1)
+Goal Metric
+Soft-launch APK Day 45
+Live Hosts Onboarded 10–15 manually
+Active Viewers 100+ testers
+Daily Calls 200 calls
+Coin Transactions ₹10K+ recharge volume
+Admin Panel Live Yes
+Uptime 95%+
+10. Future Scope (Phase 2+, Not to be covered currently)
+• In-app host hiring & onboarding system
+• Fully automated payout system with KYC & payment provider integration
+• Global expansion
+• In-app “stories” and “feed”
+• Paid stickers & voice notes
+• Regional language versions
+• Gamified tasks (spin wheel, coin lottery)
+Appendices
+• Gift images (icons)
+• Final Figma UI design (screens)
+• Hosting credentials (AWS + Firebase)
+• Coin pack pricing (Excel)
+• Notification copy (FCM text)
+• <Payment Provider> API key
+• Host invite form (Google Form or custom)
