@@ -53,7 +53,8 @@ app.use((req, res, next) => {
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
-    serveStatic(app);
+    // In production, the client assets are in 'dist/public'
+    serveStatic(app, { publicDir: "dist/public" });
   }
 
   // ALWAYS serve the app on port 5000
